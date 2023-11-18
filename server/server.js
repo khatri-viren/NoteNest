@@ -28,7 +28,11 @@ const noteSchema = new Schema({
 const Note = model("Note", noteSchema);
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://note-nest-one.vercel.app/",
+  })
+);
 app.use(bodyParser.json());
 
 // Routes
