@@ -45,7 +45,7 @@ NoteNest is a minimalist note-taking app that enhances productivity and organiza
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/swiftscribe.git
+   git clone https://github.com/khatri-viren/NoteNest.git
    ```
 
 2. Navigate to the client directory:
