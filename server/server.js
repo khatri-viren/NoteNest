@@ -28,20 +28,16 @@ const noteSchema = new Schema({
 const Note = model("Note", noteSchema);
 
 // Middleware
-app.use(
-  cors({
-    origin: "https://note-nest-one.vercel.app", // Replace with your client's URL
-    credentials: true,
-  })
-);
+app.use(cors());
 app.use(bodyParser.json());
 
+app.options("*", cors());
 // Routes
 app.get("/api/notes", async (req, res) => {
   try {
     const notes = await Note.find();
-    res.json(notes);
     res.header("Access-Control-Allow-Origin", "*");
+    res.json(notes);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
