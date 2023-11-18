@@ -63,7 +63,7 @@ NoteNest is a minimalist note-taking app that enhances productivity and organiza
 4. Start the development server:
 
    ```bash
-   npm start
+   npm run dev
    ```
 
 5. Open your browser and visit `http://localhost:3000`.
@@ -94,7 +94,7 @@ NoteNest is a minimalist note-taking app that enhances productivity and organiza
 4. Start the server:
 
    ```bash
-   npm start
+   npm run dev
    ```
 
 5. The server will run at `http://localhost:4000`.
