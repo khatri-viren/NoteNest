@@ -10,7 +10,9 @@ function App() {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/notes");
+        const response = await fetch(
+          "https://note-nest-ten.vercel.app/api/notes"
+        );
         if (response.ok) {
           const data = await response.json();
           setNotes(data);
@@ -27,13 +29,16 @@ function App() {
 
   const addNote = async (newNote) => {
     try {
-      const response = await fetch("http://localhost:4000/api/notes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newNote),
-      });
+      const response = await fetch(
+        "https://note-nest-ten.vercel.app/api/notes",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newNote),
+        }
+      );
 
       if (response.ok) {
         const addedNote = await response.json();
@@ -48,16 +53,19 @@ function App() {
 
   const updateNote = async (id, editedTitle, editedContent) => {
     try {
-      const response = await fetch(`http://localhost:4000/api/notes/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: editedTitle,
-          content: editedContent,
-        }),
-      });
+      const response = await fetch(
+        `https://note-nest-ten.vercel.app/api/notes/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: editedTitle,
+            content: editedContent,
+          }),
+        }
+      );
 
       if (response.ok) {
         const updatedNote = await response.json();
@@ -74,9 +82,12 @@ function App() {
 
   const deleteNote = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4000/api/notes/${id}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `https://note-nest-ten.vercel.app/api/notes/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (response.ok) {
         setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
