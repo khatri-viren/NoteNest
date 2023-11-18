@@ -41,6 +41,7 @@ app.get("/api/notes", async (req, res) => {
   try {
     const notes = await Note.find();
     res.json(notes);
+    res.header("Access-Control-Allow-Origin", "*");
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
