@@ -9,7 +9,6 @@ const app = express();
 const port = 4000;
 config();
 
-// Connect to MongoDB (replace 'your_database_url' with your actual MongoDB connection string)
 connect(`${process.env.MONGODB_URI}`).then(
   () => {
     console.log("Connnected to Mongoose successfully!");
@@ -36,7 +35,6 @@ app.options("*", cors());
 app.get("/api/notes", async (req, res) => {
   try {
     const notes = await Note.find();
-    res.header("Access-Control-Allow-Origin", "*");
     res.json(notes);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
