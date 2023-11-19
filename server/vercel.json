@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "name": "NoteNest Server",
   "builds": [
     {
       "src": "./server.js",
