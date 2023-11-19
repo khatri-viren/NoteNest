@@ -1,14 +1,14 @@
 // server.js
-import express from "express";
-import { connect, Schema, model } from "mongoose";
-import cors from "cors";
-import { config } from "dotenv";
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const configDotenv = require("dotenv");
+configDotenv.config();
 
 const app = express();
 const port = process.env.PORT || 4001;
-config();
 
-connect(`${process.env.MONGODB_URI}`).then(
+mongoose.connect(`${process.env.MONGODB_URI}`).then(
   () => {
     console.log("Connnected to Mongoose successfully!");
   },
@@ -18,12 +18,12 @@ connect(`${process.env.MONGODB_URI}`).then(
 );
 
 // Define a Note schema
-const noteSchema = new Schema({
+const noteSchema = new mongoose.Schema({
   title: String,
   content: String,
 });
 
-const Note = model("Note", noteSchema);
+const Note = mongoose.model("Note", noteSchema);
 
 // Middleware
 app.use(express.json());
@@ -48,6 +48,7 @@ app.get("/api/notes", async (req, res) => {
   try {
     const notes = await Note.find();
     res.json(notes);
+    console.log(notes);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
