@@ -2,11 +2,10 @@
 import express from "express";
 import { connect, Schema, model } from "mongoose";
 import cors from "cors";
-import bodyParser from "body-parser";
 import { config } from "dotenv";
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4001;
 config();
 
 connect(`${process.env.MONGODB_URI}`).then(
@@ -27,10 +26,19 @@ const noteSchema = new Schema({
 const Note = model("Note", noteSchema);
 
 // Middleware
-app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  ); // Add 'Authorization' to the header
+  next();
+});
 
-app.options("*", cors());
+app.use(cors());
+
 // Routes
 app.get("/", async (req, res) => {
   res.status(200).json({ message: "NoteNest Server is Live" });
