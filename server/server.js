@@ -32,6 +32,10 @@ app.use(bodyParser.json());
 
 app.options("*", cors());
 // Routes
+app.get("/", async (req, res) => {
+  res.status(200).json({ message: "NoteNest Server is Live" });
+});
+
 app.get("/api/notes", async (req, res) => {
   try {
     const notes = await Note.find();
