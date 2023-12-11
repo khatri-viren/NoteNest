@@ -3,7 +3,7 @@
   "name": "NoteNest Server",
   "builds": [
     {
-      "src": "./server.js",
+      "src": "*.js",
       "use": "@vercel/node"
     }
   ],

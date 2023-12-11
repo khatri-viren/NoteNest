@@ -4,13 +4,16 @@ import CreateArea from "./components/CreateArea";
 import Note from "./components/Note";
 import { useEffect, useState } from "react";
 
+const serverURL = "https://note-nest-server.vercel.app/";
+// const serverURL = "http://localhost:4000/";
+
 function App() {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/notes");
+        const response = await fetch(serverURL + "api/notes");
         if (response.ok) {
           const data = await response.json();
           setNotes(data);
@@ -27,7 +30,7 @@ function App() {
 
   const addNote = async (newNote) => {
     try {
-      const response = await fetch("http://localhost:4000/api/notes", {
+      const response = await fetch(serverURL + "api/notes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +51,7 @@ function App() {
 
   const updateNote = async (id, editedTitle, editedContent) => {
     try {
-      const response = await fetch(`http://localhost:4000/api/notes/${id}`, {
+      const response = await fetch(serverURL + `api/notes/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -74,7 +77,7 @@ function App() {
 
   const deleteNote = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4000/api/notes/${id}`, {
+      const response = await fetch(serverURL + `api/notes/${id}`, {
         method: "DELETE",
       });
 
