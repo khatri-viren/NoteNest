@@ -102,7 +102,7 @@ function App() {
       {notes.length === 0 && (
         <div className="px-10 mx-auto w-fit block"> No Notes Created </div>
       )}
-      <div className="grid grid-cols-4 gap-6 px-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-10">
         {notes.map((note, index) => {
           return (
             <Note
