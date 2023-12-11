@@ -26,7 +26,7 @@ function App() {
     };
 
     fetchNotes();
-  }, []);
+  }, [notes]);
 
   const addNote = async (newNote) => {
     try {
