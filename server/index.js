@@ -40,7 +40,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors({ origin: "https://note-nest-wine.vercel.app/" }));
+app.use(cors());
 
 // Routes
 app.get("/", async (req, res) => {
