@@ -20,6 +20,7 @@ mongoose.connect(`${process.env.MONGODB_URI}`).then(
 // Define a Note schema
 const noteSchema = new mongoose.Schema({
   title: String,
+  content: String,
 });
 
 const Note = mongoose.model("Note", noteSchema);
@@ -50,7 +51,6 @@ app.get("/api/notes", async (req, res) => {
   try {
     const notes = await Note.find();
     res.json(notes);
-    console.log(notes);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
@@ -58,9 +58,10 @@ app.get("/api/notes", async (req, res) => {
 
 app.post("/api/notes", async (req, res) => {
   const { title, content } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const newNote = new Note({ title, content });
+    // console.log(newNote);
     await newNote.save();
     res.json(newNote);
   } catch (error) {

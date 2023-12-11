@@ -4,8 +4,8 @@ import CreateArea from "./components/CreateArea";
 import Note from "./components/Note";
 import { useEffect, useState } from "react";
 
-// const serverURL = "https://note-nest-server.vercel.app/";
-const serverURL = "http://localhost:4000/";
+const serverURL = "https://note-nest-server.vercel.app/";
+// const serverURL = "http://localhost:4000/";
 
 function App() {
   const [notes, setNotes] = useState([]);
