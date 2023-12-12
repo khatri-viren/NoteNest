@@ -22,7 +22,6 @@ NoteNest is a minimalist note-taking app that enhances productivity and organiza
 - Create, edit, and delete notes
 - Clean and intuitive user interface
 - Real-time updates with server integration
-- Markdown support for rich text formatting 
 
 ## Technologies
 
@@ -30,7 +29,6 @@ NoteNest is a minimalist note-taking app that enhances productivity and organiza
 
 - React
 - Tailwind CSS
-- Axios for HTTP requests
 
 ### Server Side
 
